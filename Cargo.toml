@@ -1,0 +1,29 @@
+[package]
+name = "blue-presence"
+version = "1.0.0"
+edition = "2024"
+description = "Blue Archive Discord Rich Presence for Windows"
+license = "MIT"
+build = "build.rs"
+
+[[bin]]
+name = "BluePresence"
+path = "src/main.rs"
+
+[dependencies]
+discord-rich-presence = "1.1.0"
+eframe = { version = "0.34.3", default-features = false, features = ["default_fonts", "glow"] }
+image = { version = "0.25.10", default-features = false, features = ["ico", "png"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+single-instance = "0.3.3"
+sysinfo = { version = "0.39.5", default-features = false, features = ["system"] }
+tray-icon = { version = "0.24.1", default-features = false }
+
+[build-dependencies]
+winresource = "0.1.31"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
